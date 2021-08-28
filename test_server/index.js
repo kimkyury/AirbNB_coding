@@ -1,17 +1,17 @@
 require("dotenv").config(); // .env 파일 적용
-const express = require('express');
-const cors = require('cors'); // B-F 서버 차이(CORS)해결을 위한 미들웨어
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+const express       = require('express');
+const cors          = require('cors'); // B-F 서버 차이(CORS)해결을 위한 미들웨어
+const bodyParser    = require("body-parser");
+const cookieParser  = require("cookie-parser");
 
-const app =express();
-const path = require("path");
-const config = require("./config/key");
-const mongoose = require("mongoose");
-const port = process.env.PORT
+const app       = express();
+const path      = require("path");
+const config    = require("./config/key");
+const mongoose  = require("mongoose");
+const port      = process.env.PORT
 
 const connect = mongoose.connect(config.mongoURI,{
-        userNewUrlParser: true, 
+        userNewUrlParser : true, 
         useUnifiedTopology: true,
         userCreateIndex: true, 
         useFindAndModify: false
@@ -29,7 +29,12 @@ app.use(cookieParser());
 
 
 /* api 생성 */
-app.use('/api/menus', require('./api/menus'));
+app.use('/api/menus', require('./api/menus'));  // api폴더 > menus.js 내용 참고
+
+
+
+
+
 app.get('/api/menus', (req, res) => {
     console.log('  ', menu);
     res.json(" 🚩 api/menus가 호출되었습니다. ");
@@ -44,7 +49,7 @@ app.get('/', (req, res) => {
     res.send(" 🚩 App이 작동중입니다. ");
 });
 
-
+/* 서버 연결 */
 app.listen(port, () => {
     console.log(`✔️ ${port}에서 대기하고 있습니다.`)
 });

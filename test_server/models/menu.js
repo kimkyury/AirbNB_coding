@@ -4,7 +4,7 @@ const menuSchema = new mongoose.Schema({
   fileUrl: { type: String, required: true },
   imgUrl: { type: String, required: false },
 
-  title: { type: String, required: true, trim: true, maxLength: 20 },
+  menuName: { type: String, required: true, trim: true, maxLength: 20 },
   description: { type: String, required: true, trim: true, maxLength: 40 },
   ingredients: [{ type: String, required: true }],
   hashtags: [{ type: String, trim: true }],
