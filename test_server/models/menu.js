@@ -7,7 +7,7 @@ const menuSchema = new mongoose.Schema({
   menuName: { type: String, required: true, trim: true, maxLength: 20 },
   description: { type: String, required: true, trim: true, maxLength: 40 },
   ingredients: [{ type: String, required: true }],
-  hashtags: [{ type: String, trim: true }],
+  allergies: [{ type: String, trim: true }],
 
   nt_calories: { type: String, required: true },
   nt_totalCarbohydrate: { type: String, required: true },
