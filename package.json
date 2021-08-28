@@ -4,6 +4,7 @@
   "description": "<img src = \"https://user-images.githubusercontent.com/71677810/127866209-aaed683e-b10a-4772-8195-55c15e3fb6c9.png\" width=\"30%\" height=\"30%\">",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon test_server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

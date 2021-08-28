@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+var mongoose = require('mongoose');
 
 const menuSchema = new mongoose.Schema({
   fileUrl: { type: String, required: true },
