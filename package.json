@@ -4,7 +4,9 @@
   "description": "<img src = \"https://user-images.githubusercontent.com/71677810/127866209-aaed683e-b10a-4772-8195-55c15e3fb6c9.png\" width=\"30%\" height=\"30%\">",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon test_server/server.js",
+    "frontend": "npm run start --prefix test_react",
+    "backend": "nodemon --exec babel-node test_server/server.js",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix test_react\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +31,10 @@
     "mongoose": "^6.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
+    "babel": "^6.23.0",
     "concurrently": "^6.2.1",
     "nodemon": "^2.0.12"
   }

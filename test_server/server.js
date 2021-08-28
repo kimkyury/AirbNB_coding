@@ -10,12 +10,10 @@ const config    = require("./config/key");
 const mongoose  = require("mongoose");
 const port      = process.env.PORT
 
-const connect = mongoose.connect(config.mongoURI,{
-        userNewUrlParser : true, 
-        useUnifiedTopology: true,
-        userCreateIndex: true, 
-        useFindAndModify: false
-    }).then(() => console.log('✔️ MongoDB 연결했어요 ')).catch(err => console.log(err));
+mongoose.Promise = global.Promise;
+const connect = mongoose.connect(config.mongoURI)
+    .then(() => console.log('✔️ MongoDB 연결했어요 '))
+    .catch(err => console.log(err));
 
 
 /* 패키지 적용 */
@@ -29,9 +27,8 @@ app.use(cookieParser());
 
 
 /* api 생성 */
+app.use('/api', (req, res) => res.json({menuName:'베이컨아보카도샌드위치'}));
 app.use('/api/menus', require('./api/menus'));  // api폴더 > menus.js 내용 참고
-
-
 
 
 
@@ -39,17 +36,18 @@ app.get('/api/menus', (req, res) => {
     console.log('  ', menu);
     res.json(" 🚩 api/menus가 호출되었습니다. ");
 });
+app.get('/', (req, res) => {
+    res.send(" 🚩 App이 작동 중입니다. ");
+});
 app.post('api/menu', (req, res) => {
     const menu = req.body.menu;
     console.log('➕ menu 추가하기 ➕', menu);
     menus.push(menu);
     res.json("menu를 추가했습니다. ");
 });
-app.get('/', (req, res) => {
-    res.send(" 🚩 App이 작동중입니다. ");
-});
+
 
 /* 서버 연결 */
 app.listen(port, () => {
-    console.log(`✔️ ${port}에서 대기하고 있습니다.`)
+    console.log(`✔️ http://localhost:`+port + `, ${port}port에서 대기하고 있습니다.`)
 });

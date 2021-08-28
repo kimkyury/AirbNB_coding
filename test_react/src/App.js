@@ -10,6 +10,13 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('api')
+        .then(res=>res.json())
+        .then(data=>this.setState({menuName:data.menuName}));
+  }
+
+
   render() {
     const {menuName } = this.state;
     return (
