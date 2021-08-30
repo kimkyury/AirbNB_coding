@@ -21,14 +21,15 @@ const connect = mongoose
 app.use(cors());
 // 가공된 형태로 보내고-받고-접근할 수 있도록 bodyParser 적용 => 디폴트값(Undefind)오류 해결
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //요청된 쿠키를 쉽게 추출하도록 함
 app.use(cookieParser());
 
 /* api 생성 */
-app.use("/api/restaurantName", require("./api/menus")); // api폴더 > menus.js 내용 참고
-app.use("/api/menu", require("./api/menus")); // api폴더 > menus.js 내용 참고
+app.use("/api/menus", require("./api/menuRouter")); // api폴더 > menusRouter.js 내용 참고
 
+/*
 app.get("/api/menus", (req, res) => {
   console.log("  ", menu);
   res.json(" 🚩 api/menus가 호출되었습니다. ");
@@ -42,6 +43,7 @@ app.post("api/menu", (req, res) => {
   menus.push(menu);
   res.json("menu를 추가했습니다. ");
 });
+*/
 
 /* 서버 연결 */
 app.listen(port, () => {
