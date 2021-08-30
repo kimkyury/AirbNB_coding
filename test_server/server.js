@@ -8,6 +8,7 @@ const app = express();
 const path = require("path");
 const config = require("./config/key");
 const mongoose = require("mongoose");
+
 const port = process.env.PORT;
 
 mongoose.Promise = global.Promise;
@@ -25,6 +26,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //요청된 쿠키를 쉽게 추출하도록 함
 app.use(cookieParser());
+//이미지를 불러오기 위해 폴더 선언
+app.use(express.static("uploads"));
 
 /* api 생성 */
 app.use("/api/menus", require("./api/menuRouter")); // api폴더 > menusRouter.js 내용 참고
