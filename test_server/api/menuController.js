@@ -33,3 +33,17 @@ export const searchAllergy = async (req, res) => {
   }
   res.json({ success: true, data: menus });
 };
+
+//메뉴명으로 검색받기
+export const searchMenuName = async (req, res) => {
+  const { menuName } = req.params;
+  let menus = [];
+  if (menuName) {
+    menus = await Menu.find({
+      menuName: {
+        $regex: new RegExp(`${menuName}$`, "i"),
+      },
+    });
+  }
+  res.json({ success: true, data: menus });
+};

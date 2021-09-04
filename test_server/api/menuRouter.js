@@ -1,9 +1,15 @@
 import express from "express";
-import { searchRestaurant, index, searchAllergy } from "./menuController";
+import {
+  searchRestaurant,
+  index,
+  searchAllergy,
+  searchMenuName,
+} from "./menuController";
 
 const menuRouter = express.Router();
 
 menuRouter.get("/all", index);
-menuRouter.get("/allergySerch/:allergies", searchAllergy);
+menuRouter.get("/allergyserch/:allergies", searchAllergy);
+menuRouter.get("/menusearch/:menuname", searchMenuName);
 
 module.exports = menuRouter;
