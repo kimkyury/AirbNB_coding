@@ -59,7 +59,7 @@ class App extends Component {
                   return (
                     <Menu
                       key={m._id}
-                      image={m.imgUrl}
+                      imgUrl={m.imgUrl}
                       menuName={m.menuName}
                       restaurantName={m.restaurantName}
                       allergies={m.allergies}

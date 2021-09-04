@@ -3,11 +3,14 @@ const express = require("express");
 const cors = require("cors"); // B-F 서버 차이(CORS)해결을 위한 미들웨어
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const fs = require("fs-extra");
 
 const app = express();
 const path = require("path");
 const config = require("./config/key");
 const mongoose = require("mongoose");
+const { PassThrough } = require("stream");
+const os = require("os");
 
 const port = process.env.PORT;
 
@@ -26,8 +29,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 //요청된 쿠키를 쉽게 추출하도록 함
 app.use(cookieParser());
-//이미지를 불러오기 위해 폴더 선언
-app.use(express.static("uploads"));
 
 /* api 생성 */
 app.use("/api/menus", require("./api/menuRouter")); // api폴더 > menusRouter.js 내용 참고
@@ -47,6 +48,36 @@ app.post("api/menu", (req, res) => {
   res.json("menu를 추가했습니다. ");
 });
 */
+
+/* 이미지 경로 설정 */
+/*
+const path_dir = "C:\\Users\\aeae2\\Downloads\\menuImage\\";
+let file_list = os.listdir(path_dir);
+file_list.sort();
+let png_list = [];
+
+print(len(file_list));
+*/
+/*
+for i in range(10):
+  path_png = path_dir + str(file_list[i]) +  '\\'
+  png_list.append(os.listdir(path_png))
+
+
+
+path = []
+for i in Range(5):
+  for j in Range(195):
+    try:
+      path.append(path_dir + file_list[i] + '\\' + png_list[i][j])
+    execpt:
+      PassThrough
+
+print(len(path))
+
+*/
+
+app.use(express.static(__dirname + "/public"));
 
 /* 서버 연결 */
 app.listen(port, () => {

@@ -8,7 +8,10 @@ class Menu extends React.Component {
       <TableRow>
         <TableCell>{this.props.menuName}</TableCell>
         <TableCell>
-          <img src={"/" + this.props.imgUrl} alt="menuImage" />
+          <img
+            src={"data:image/png;base64," + this.props.imgUrl}
+            alt="menuImage"
+          />
         </TableCell>
         <TableCell>{this.props.restaurantName}</TableCell>
         <TableCell>{this.props.allergies}</TableCell>
