@@ -1,10 +1,10 @@
 require("dotenv").config();
-const request = require("request");
 
-//내가 발급받은 키 정보
-const serviceKey = process.env.WEATHER_SERVICEKEY;
+var request = require("request");
 
-var url = "http://apis.data.go.kr/1360000/WthrChartInfoService/getSurfaceChart";
+var url = "http://apis.data.go.kr/1360000/RadarImgInfoService/getCmpImg";
+serviceKey = process.env.RADER_SERVICEKEY;
+
 var queryParams =
   "?" + encodeURIComponent("serviceKey") + "=" + serviceKey; /* Service Key*/
 queryParams +=
@@ -14,7 +14,7 @@ queryParams +=
 queryParams +=
   "&" + encodeURIComponent("dataType") + "=" + encodeURIComponent("XML"); /* */
 queryParams +=
-  "&" + encodeURIComponent("code") + "=" + encodeURIComponent("24"); /* */
+  "&" + encodeURIComponent("data") + "=" + encodeURIComponent("CMP_WRC"); /* */
 queryParams +=
   "&" + encodeURIComponent("time") + "=" + encodeURIComponent("20211130"); /* */
 
