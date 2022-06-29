@@ -1,0 +1,9 @@
+// ts : Compiler
+{
+    "inclue": [ // src의 모든 파일을 확인하도록 명시
+        "src"
+    ],
+    "compilerOptions" : { // Ts -> Js로 컴파일 시킬 것임
+        "outDir": "build" // 컴파일한 JS 파일의 경로
+    }
+}
