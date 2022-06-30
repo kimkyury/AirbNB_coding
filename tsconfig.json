@@ -5,6 +5,12 @@
     ],
     "compilerOptions" : { // Ts -> Js로 컴파일 시킬 것임
         "outDir": "build", // 컴파일한 JS 파일의 경로
-        "target": "ES6"  // 컴파일할 JS의 버전 명시
+        "target": "ES6",  // 컴파일할 JS의 버전 명시
+        //"lib" : ["ES6", "DOM"], // ES6지원 서버 && DOM(브라우저환경)에서 코드 실행할 것을 명시
+        "strict": true, // 모드 활성화, 이제 TS의 간섭이 시작됨
+        //"allowJs": true, // js파일 사용가능
+        "esModuleInterop": true, // 
+        "module" : "CommonJS" // 브라우저 앱을 만들때는 umd
+
     }
 }
